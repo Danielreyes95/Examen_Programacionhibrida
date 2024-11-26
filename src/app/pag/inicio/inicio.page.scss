@@ -1,0 +1,31 @@
+ion-item h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  ion-item .fecha {
+    font-size: 0.8em;
+    color: gray;
+    margin-left: 10px;
+  }
+  
+  .previsualizacion-imagen {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px; /* Añadir margen derecho para el espacio */
+  }
+  
+  .publicacion-contenido {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px; /* Asegurar que todo el contenido esté alineado */
+  }
+  
+  .publicacion-contenido h2,
+  .publicacion-contenido p {
+    margin: 0;
+    padding: 0;
+  }
+  

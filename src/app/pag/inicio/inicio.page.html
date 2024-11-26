@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Publicaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let plubica of plubicacion" lines="none">
+      <ion-thumbnail slot="start">
+        <ion-img *ngIf="plubica.imagen" [src]="plubica.imagen" class="previsualizacion-imagen"></ion-img>
+      </ion-thumbnail>
+      <ion-label class="publicacion-contenido">
+        <h2>
+          {{ plubica.titulo }}
+          <span class="fecha">{{ plubica.fecha | formatoFecha }}</span>
+        </h2>
+        <p>{{ plubica.descripcion }}</p>
+      </ion-label>
+      <ion-button color="danger" slot="end" (click)="confirmarEliminacion(plubica.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón Flotante -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/formulario']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

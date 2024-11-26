@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Publicacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <form [formGroup]="publicacionForm" (ngSubmit)="guardar()">
+    <ion-list>
+      <ion-item>
+        <ion-input labelPlacement="floating" formControlName="titulo">
+          <div slot="label">Titulo<ion-text color="danger">(*)</ion-text></div>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="publicacionForm.controls['titulo'].invalid && publicacionForm.controls['titulo'].touched">
+        El título es obligatorio y debe tener al menos 5 caracteres.
+      </ion-note>
+
+      <ion-item>
+        <ion-button (click)="takePicture()" color="dark">
+          <ion-icon slot="icon-only" name="camera"></ion-icon>
+          Fotografía
+        </ion-button>
+        <ion-thumbnail class="image-thumbnail">
+          <ion-img *ngIf="foto" [src]="foto" class="previsualizacion-imagen"></ion-img>
+        </ion-thumbnail>
+      </ion-item>
+      <ion-note color="danger" *ngIf="!foto && publicacionForm.controls['imagen'].touched">
+        La imagen es obligatoria.
+      </ion-note>
+
+      <ion-item>
+        <ion-input labelPlacement="floating" formControlName="descripcion">
+          <div slot="label">Descripción</div>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="publicacionForm.controls['descripcion'].invalid && publicacionForm.controls['descripcion'].touched">
+        La descripción es obligatoria y debe tener al menos 20 caracteres.
+      </ion-note>
+
+      <ion-item>
+        <ion-button type="submit" [disabled]="publicacionForm.invalid">GUARDAR</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
